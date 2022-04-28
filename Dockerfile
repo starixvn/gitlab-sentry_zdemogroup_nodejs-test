@@ -1,5 +1,5 @@
-FROM registry.nexdev.net:5050/docker/node:14.16-alpine
-#registry.nexdev.net:5050/docker/node:14.15.1-slim
+FROM registry.nexdev.net:5050/docker/node:14.15.1-slim
+#registry.nexdev.net:5050/docker/node:14.15.1-slim registry.nexdev.net:5050/docker/node:14.16-alpine
 
 #USER root
 
@@ -21,8 +21,7 @@ RUN addgroup -g 1410 appgroup
 RUN adduser -D -u 1410 appuser -G appgroup
 RUN chown -R appuser:appgroup /usr/src/app
 USER appuser
-#EXPOSE 5000
-CMD [ "node", "app.js" ]
+CMD [ "node","--max-old-space-size=8192", "--es-module-specifier-resolution=node", "app.js" ]
 #HEALTHCHECK --interval=10s CMD node --es-module-specifier-resolution=node healthcheck.js
 
 #CMD [ "node", "--max-old-space-size=8192", "--es-module-specifier-resolution=node", "./app.js" ]
