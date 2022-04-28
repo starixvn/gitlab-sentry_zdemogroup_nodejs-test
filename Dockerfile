@@ -1,4 +1,5 @@
-FROM registry.nexdev.net:5050/docker/node:17.9-alpine3.14
+FROM registry.nexdev.net:5050/docker/node:17.9-slim 
+#17.9-alpine3.14
 #registry.nexdev.net:5050/docker/node:14.15.1-slim registry.nexdev.net:5050/docker/node:14.16-alpine
 
 #USER root
