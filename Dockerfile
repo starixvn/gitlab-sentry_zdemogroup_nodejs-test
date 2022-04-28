@@ -1,4 +1,4 @@
-FROM node:17.9-slim
+FROM registry.nexdev.net:5050/docker/node:17.9-alpine3.14
 #registry.nexdev.net:5050/docker/node:14.15.1-slim registry.nexdev.net:5050/docker/node:14.16-alpine
 
 #USER root
@@ -17,7 +17,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 # Create a group and user
-RUN addgroup -g 1410 appgroup
+RUN addgroup -gid 1410 appgroup
 RUN adduser -D -u 1410 appuser -G appgroup
 RUN chown -R appuser:appgroup /usr/src/app
 USER appuser
