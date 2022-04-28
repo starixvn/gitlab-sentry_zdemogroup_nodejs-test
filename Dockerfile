@@ -18,10 +18,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 # Create a group and user
-RUN addgroup --gid 1410 appgroup
-RUN adduser -D -u 1410 appuser -G appgroup
-RUN chown -R appuser:appgroup /usr/src/app
-USER appuser
+#RUN addgroup --gid 1410 appgroup
+#RUN adduser -D -u 1410 appuser --group appgroup
+#RUN chown -R appuser:appgroup /usr/src/app
+#USER appuser
+USER node
 CMD [ "node","--max-old-space-size=8192", "--es-module-specifier-resolution=node", "app.js" ]
 #HEALTHCHECK --interval=10s CMD node --es-module-specifier-resolution=node healthcheck.js
 
