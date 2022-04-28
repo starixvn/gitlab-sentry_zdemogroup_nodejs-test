@@ -1,14 +1,13 @@
 {
-  "name": "nodejs",
+  "name": "docker_web_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "NexOps",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.0"
+    "express": "^4.16.1"
   }
 }

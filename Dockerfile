@@ -2,17 +2,22 @@ FROM registry.nexdev.net:5050/docker/node:14.15.1-slim
 
 USER root
 
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
-RUN mkdir /app && chown node:node /app
+WORKDIR /usr/src/app
 
-WORKDIR /app
-COPY package.json ./
-RUN npm run reg
-#RUN yarn install --production
-#ENV PATH /app/node_modules/.bin:$PATH
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-COPY ./ .
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
+
+# Bundle app source
+COPY . .
+
+EXPOSE 8080
+CMD [ "node", "app.js" ]
 #HEALTHCHECK --interval=10s CMD node --es-module-specifier-resolution=node healthcheck.js
 
-CMD [ "node", "--max-old-space-size=8192", "--es-module-specifier-resolution=node", "./app.js" ]
+#CMD [ "node", "--max-old-space-size=8192", "--es-module-specifier-resolution=node", "./app.js" ]
