@@ -16,8 +16,12 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-
-EXPOSE 5000
+# Create a group and user
+RUN addgroup -g 1410 appgroup
+RUN adduser -D -u 1410 appuser -G appgroup
+RUN chown -R appuser:appgroup /usr/src/app
+USER appuser
+#EXPOSE 5000
 CMD [ "node", "app.js" ]
 #HEALTHCHECK --interval=10s CMD node --es-module-specifier-resolution=node healthcheck.js
 
