@@ -17,7 +17,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 # Create a group and user
-RUN addgroup -gid 1410 appgroup
+RUN addgroup --gid 1410 appgroup
 RUN adduser -D -u 1410 appuser -G appgroup
 RUN chown -R appuser:appgroup /usr/src/app
 USER appuser
