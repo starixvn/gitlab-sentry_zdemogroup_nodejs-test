@@ -14,7 +14,6 @@ COPY package*.json ./
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
-adsfds
 # Bundle app source
 COPY . .
 # Create a group and user
