@@ -21,7 +21,7 @@ COPY . .
 #RUN adduser -D -u 1410 appuser --group appgroup
 #RUN chown -R appuser:appgroup /usr/src/app
 #USER appuser
-chown -R node /usr/src/app
+RUN chown -R node /usr/src/app
 USER node
 CMD [ "node","--max-old-space-size=8192", "--es-module-specifier-resolution=node", "app.js" ]
 #HEALTHCHECK --interval=10s CMD node --es-module-specifier-resolution=node healthcheck.js
