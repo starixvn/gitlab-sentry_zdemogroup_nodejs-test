@@ -1,4 +1,5 @@
-FROM registry.nexdev.net:5050/docker/node:16.15-slim 
+FROM registry.nexdev.net:5050/docker/node:18.1-slim
+#registry.nexdev.net:5050/docker/node:16.15-slim 
 #17.9-alpine3.14
 #registry.nexdev.net:5050/docker/node:14.15.1-slim registry.nexdev.net:5050/docker/node:14.16-alpine node:17.9-slim 
 
