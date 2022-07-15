@@ -1,4 +1,34 @@
-include:
-  - project: "ci/repos-ci/nexops_sample_nodejs_website1"
-    ref: master
-    file: "gitlab-ci.yml"
+#include:
+#  - project: "ci/repos-ci/nexops_sample_nodejs_website1"
+#    ref: master
+#    file: "gitlab-ci.yml"
+##############
+image: hub.nexdev.net/base/docker:20.10.7-bash
+stages:
+  - build
+  - run
+
+# Job's name
+first-job:
+  # Define stage
+  stage: build
+  # What to run on the job.
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+
+second-job:
+  stage: run
+  script:
+    - npm run start
+    - node test.js
+  artifacts:
+    paths:
+      - node_modules/
+
+second-job-parallel:
+  stage: run
+  script:
+    - echo "I'm running at the same time as second-job!!!"
